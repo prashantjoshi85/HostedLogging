@@ -70,107 +70,134 @@ namespace WebAPILogProcessor
             {
                 while (true)
                 {
-
                     IsRunning = true;
-                    List<string> allLines = new List<string>();
-                    using (StreamReader fileReader = new StreamReader(LogFilePath))
+                    DirectoryInfo info = new DirectoryInfo(LogFilePath);
+                    FileInfo[] files = info.GetFiles().OrderBy(p => p.CreationTime).ToArray();
+                    foreach (FileInfo file in files)
                     {
-                        //string line;
-                        if (new FileInfo(LogFilePath).Length == 0)
+                        List<string> allLines = new List<string>();
+                        //using (StreamReader fileReader = new StreamReader(file.FullName))
+                        //{
+                        allLines = File.ReadAllLines(file.FullName).ToList();
+                        if (allLines.Count == 0)
                         {
                             startTimer();
                             break;
                         }
                         else
                         {
-                            allLines = File.ReadAllLines(LogFilePath).ToList();
-                        }
-                    }
-
-                    //while ((line = fileReader.ReadLine()) != null)
-                    foreach (string line in allLines)
-                    {
-                        if (line.Trim() == string.Empty) continue;
-                        int EndIndex = line.IndexOf("]");
-                        DateTime LogDateTime = Convert.ToDateTime(line.Substring(1, EndIndex - 1));
-                        int ErrorIndex = line.IndexOf(":");
-                        int LineLength = line.Length;
-                        string LogType = line.Substring(EndIndex + 1, (ErrorIndex - (EndIndex + 1)));
-                        string PayLoads = line.Substring(ErrorIndex + 1, (LineLength - (ErrorIndex + 1)));
-                        Int32 LogTypeId = 0;
-
-                        switch (LogType.ToUpper())
-                        {
-                            case "ERROR":
-                                LogTypeId = Int32.Parse(Common.LogType.Error.ToString());
-                                break;
-                            case "WARNING":
-                                LogTypeId = Int32.Parse(Common.LogType.Warning.ToString());
-                                break;
-                            case "INFO":
-                                LogTypeId = Int32.Parse(Common.LogType.Error.ToString());
-                                break;
-                        }
-
-
-                        using (var client = new WebClient())
-                        {
-                            LogEntry lEntry = new LogEntry();
-                            lEntry.ApplicationId = ApplicationId;
-                            lEntry.ClientId = ClientId;
-                            lEntry.LogDateTime = LogDateTime;
-                            lEntry.LogType = LogTypeId;
-                            lEntry.LogPayloads = new List<LogPayload>();
-                            lEntry.LogPayloads.Add(new LogPayload { PayLoad = PayLoads });
-                            try
+                            foreach (string line in allLines)
                             {
-                                client.Headers.Add("Content-Type:application/json");
-                                client.Headers.Add("Accept:application/json");
-                                //var result = client.UploadString("http://10.31.24.53/LoggerAPI/api/LogEntries", JsonConvert.SerializeObject(lEntry));
-                                var result = client.UploadString(APIUrl, JsonConvert.SerializeObject(lEntry));
-                            }
-                            catch (WebException ex)
-                            {
-                                //fileReader.Close();
-                                Task.Factory.StartNew(() =>
-                                {
-                                    WriteToText(ex);
-                                });
+                                if (line.Trim() == string.Empty) continue;
+                                int EndIndex = line.IndexOf("]");
+                                DateTime LogDateTime = Convert.ToDateTime(line.Substring(1, EndIndex - 1));
+                                int ErrorIndex = line.IndexOf(":");
+                                int LineLength = line.Length;
+                                string LogType = line.Substring(EndIndex + 1, (ErrorIndex - (EndIndex + 1)));
+                                string PayLoads = line.Substring(ErrorIndex + 1, (LineLength - (ErrorIndex + 1)));
+                                Int32 LogTypeId = 0;
 
-                                if (ex.Response is HttpWebResponse)
+                                switch (LogType.ToUpper())
                                 {
-                                    switch (((HttpWebResponse)ex.Response).StatusCode)
+                                    case "ERROR":
+                                        LogTypeId = Int32.Parse(Common.LogType.Error.ToString());
+                                        break;
+                                    case "WARNING":
+                                        LogTypeId = Int32.Parse(Common.LogType.Warning.ToString());
+                                        break;
+                                    case "INFO":
+                                        LogTypeId = Int32.Parse(Common.LogType.Error.ToString());
+                                        break;
+                                }
+
+                                using (var client = new WebClient())
+                                {
+                                    LogEntry lEntry = new LogEntry();
+                                    lEntry.ApplicationId = ApplicationId;
+                                    lEntry.ClientId = ClientId;
+                                    lEntry.LogDateTime = LogDateTime;
+                                    lEntry.LogType = LogTypeId;
+                                    lEntry.LogPayloads = new List<LogPayload>();
+                                    lEntry.LogPayloads.Add(new LogPayload { PayLoad = PayLoads });
+                                    try
                                     {
-                                        case HttpStatusCode.GatewayTimeout:
-                                            startTimer();
-                                            break;
-                                        case HttpStatusCode.InternalServerError:
-                                            startTimer();
-                                            break;
-                                        case HttpStatusCode.RequestTimeout:
-                                            startTimer();
-                                            break;
-                                        case HttpStatusCode.ServiceUnavailable:
-                                            startTimer();
-                                            break;
-                                        default:
-                                            throw ex;
+                                        client.Headers.Add("Content-Type:application/json");
+                                        client.Headers.Add("Accept:application/json");
+                                        //var result = client.UploadString("http://10.31.24.53/LoggerAPI/api/LogEntries", JsonConvert.SerializeObject(lEntry));
+                                        var result = client.UploadString(APIUrl, JsonConvert.SerializeObject(lEntry));
+                                    }
+                                    catch (WebException ex)
+                                    {
+                                        //fileReader.Close();
+                                        Task.Factory.StartNew(() =>
+                                        {
+                                            WriteToText(ex);
+                                        });
+
+                                        if (ex.Response is HttpWebResponse)
+                                        {
+                                            switch (((HttpWebResponse)ex.Response).StatusCode)
+                                            {
+                                                case HttpStatusCode.GatewayTimeout:
+                                                    startTimer();
+                                                    break;
+                                                case HttpStatusCode.InternalServerError:
+                                                    startTimer();
+                                                    break;
+                                                case HttpStatusCode.RequestTimeout:
+                                                    startTimer();
+                                                    break;
+                                                case HttpStatusCode.ServiceUnavailable:
+                                                    startTimer();
+                                                    break;
+                                                default:
+                                                    throw ex;
+                                            }
+                                        }
+                                        IsRunning = false;
+                                        break;
                                     }
                                 }
-                                IsRunning = false;
-                                break;
+
                             }
                         }
-
+                        //}
+                        File.Delete(file.FullName);
                     }
 
-                    //file.Close();
-                    //}
-                    // }
-                    // read each line
-                    // seggregate Datetime, log type, payload and send over webAPI
-                    // delete log line in file
+                    #region "DeletedCode1"
 
+                    //String Parent = Directory.GetParent(LogFilePath).FullName;
+                    //string LogReplicaPath = Parent + "\\LogReplica";
+                    //if (!Directory.Exists(LogReplicaPath))
+                    //{
+                    //    Directory.CreateDirectory(LogReplicaPath);
+                    //}
+
+                    //string LogReplicaFileName = LogReplicaPath + "\\TempLogFile_" + DateTime.Now.ToString("yyyy-MM-ddHH:mm:ss") + ".txt";
+
+                    //File.Copy(LogFilePath, LogReplicaFileName);
+                    //using (StreamWriter writer = new StreamWriter(LogReplicaFileName))
+                    //{
+                    //    foreach (string fLine in allLines)
+                    //    {
+                    //        writer.WriteLine(fLine);
+                    //    }
+                    //}
+                    //using (StreamWriter orgWriter = new StreamWriter(LogFilePath))
+                    //{
+                    //    orgWriter.Write("");
+                    //}
+
+
+
+                    //using (StreamWriter orgWriter = new StreamWriter(LogReplicaFileName))
+                    //{
+                    //    orgWriter.Write("");
+                    //}
+                    #endregion
+
+                    IsRunning = false;
                 }
             }
             catch (Exception Ex)
