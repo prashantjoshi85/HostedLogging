@@ -1,0 +1,180 @@
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\ApplicationInsights.config
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\roslyn\csc.exe
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\roslyn\System.Collections.Immutable.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\roslyn\System.Reflection.Metadata.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\roslyn\vbc.exe
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\roslyn\VBCSCompiler.exe
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\roslyn\VBCSCompiler.exe.config
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\LoggerAPI.dll.config
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\LoggerAPI.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\LoggerAPI.pdb
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Antlr3.Runtime.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\EntityFramework.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\EntityFramework.SqlServer.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AI.Agent.Intercept.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AI.DependencyCollector.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AI.Web.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AI.WindowsServer.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.ApplicationInsights.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AspNet.Identity.Core.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Cookies.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Facebook.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Google.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.OAuth.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Twitter.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Web.Infrastructure.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Newtonsoft.Json.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Owin.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Net.Http.Formatting.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Helpers.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Http.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Http.Owin.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Http.WebHost.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Mvc.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Optimization.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Razor.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.WebPages.Deployment.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.WebPages.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.WebPages.Razor.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\WebGrease.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AI.DependencyCollector.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AI.Web.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AI.WindowsServer.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.ApplicationInsights.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Newtonsoft.Json.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Net.Http.Formatting.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Helpers.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Http.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Http.WebHost.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Mvc.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Optimization.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Razor.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.WebPages.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.WebPages.Deployment.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.WebPages.Razor.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Antlr3.Runtime.pdb
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\EntityFramework.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\EntityFramework.SqlServer.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AspNet.Identity.Core.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Facebook.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Cookies.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.OAuth.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Google.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Twitter.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\bin\System.Web.Http.Owin.xml
+D:\New folder (3)\LoggerAPI\LoggerAPI\obj\Debug\LoggerAPI.csprojResolveAssemblyReference.cache
+D:\New folder (3)\LoggerAPI\LoggerAPI\obj\Debug\LoggerAPI.dll
+D:\New folder (3)\LoggerAPI\LoggerAPI\obj\Debug\LoggerAPI.pdb
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\ApplicationInsights.config
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\roslyn\csc.exe
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\roslyn\System.Collections.Immutable.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\roslyn\System.Reflection.Metadata.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\roslyn\vbc.exe
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\roslyn\VBCSCompiler.exe
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\roslyn\VBCSCompiler.exe.config
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\LoggerAPI.dll.config
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\LoggerAPI.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\LoggerAPI.pdb
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Antlr3.Runtime.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\EntityFramework.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\EntityFramework.SqlServer.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AI.Agent.Intercept.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AI.DependencyCollector.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AI.Web.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AI.WindowsServer.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.ApplicationInsights.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AspNet.Identity.Core.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Cookies.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Facebook.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Google.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.OAuth.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Twitter.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Web.Infrastructure.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Newtonsoft.Json.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Owin.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Net.Http.Formatting.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Helpers.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Http.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Http.Owin.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Http.WebHost.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Mvc.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Optimization.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Razor.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.WebPages.Deployment.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.WebPages.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.WebPages.Razor.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\WebGrease.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AI.DependencyCollector.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AI.Web.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AI.WindowsServer.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.ApplicationInsights.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Newtonsoft.Json.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Net.Http.Formatting.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Helpers.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Http.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Http.WebHost.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Mvc.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Optimization.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Razor.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.WebPages.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.WebPages.Deployment.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.WebPages.Razor.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Antlr3.Runtime.pdb
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\EntityFramework.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\EntityFramework.SqlServer.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AspNet.Identity.Core.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Facebook.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Cookies.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.OAuth.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Google.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.Twitter.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\bin\System.Web.Http.Owin.xml
+D:\WebAPI\LoggerAPI\LoggerAPI\obj\Debug\LoggerAPI.csprojResolveAssemblyReference.cache
+D:\WebAPI\LoggerAPI\LoggerAPI\obj\Debug\LoggerAPI.dll
+D:\WebAPI\LoggerAPI\LoggerAPI\obj\Debug\LoggerAPI.pdb
