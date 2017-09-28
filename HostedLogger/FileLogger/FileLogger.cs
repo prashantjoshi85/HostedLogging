@@ -23,7 +23,7 @@ namespace FileLogger
         void ILogger.WriteLog(Common.LogType LogType, string Log)
         {
             // write into file
-            System.IO.StreamWriter loggerFile = new System.IO.StreamWriter(logFilePath + "\\LogFile.txt", true);
+            System.IO.StreamWriter webAPILoggerFile = new System.IO.StreamWriter(logFilePath + "\\LogFile_" + Guid.NewGuid().ToString() + ".txt", true);
 
             loggerFile.WriteLine("[" + DateTime.Now.ToString() + "]" + LogType.ToString() + ":" + "<" + Log + ">");
         }

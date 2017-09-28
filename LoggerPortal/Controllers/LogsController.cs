@@ -37,6 +37,16 @@ namespace LoggerPortal.Controllers
             SelectList listApplicationName = new SelectList(Applications, "ApplicationId", "ApplicationName");
             ViewBag.Applications = listApplicationName;
 
+            var LogTypes = from l in _db.LogTypes
+                               select new
+                               {
+                                   LogTypeId = l.LogTypeId,
+                                   LogTypeName = l.LogTypeName
+                               };
+
+            SelectList listLogTypes = new SelectList(LogTypes, "LogTypeId", "LogTypeName");
+            ViewBag.LogTypes = listLogTypes;
+
             return View();
         }
 

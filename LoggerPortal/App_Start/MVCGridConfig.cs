@@ -20,7 +20,7 @@ namespace LoggerPortal
             .WithAuthorizationType(AuthorizationType.AllowAnonymous)
             .AddColumns(cols =>
             {
-                cols.Add("LogID")//.WithVisibility(false)
+                cols.Add("LogID").WithVisibility(false)
                     .WithSorting(false)
                     .WithFiltering(false)
                     .WithValueExpression(p => p.LogId.ToString());
@@ -29,6 +29,9 @@ namespace LoggerPortal
                     .WithFiltering(true);
                 cols.Add("ApplicationId").WithVisibility(false)
                     .WithValueExpression(p => p.ApplicationId.ToString())
+                    .WithFiltering(true);
+                cols.Add("LogTypeId").WithVisibility(false)
+                    .WithValueExpression(p => p.LogType.ToString())
                     .WithFiltering(true);
                 cols.Add("ClientName").WithHeaderText("Client")
                     .WithValueExpression(p => p.ClientName)
@@ -49,7 +52,9 @@ namespace LoggerPortal
                 cols.Add("ViewLink").WithSorting(false)
                     .WithHeaderText("")
                     .WithHtmlEncoding(false)
-                    .WithValueTemplate("<a class='LogsDetailGridClass' href='javascript:;'>View</a>");
+                    .WithValueExpression(p => p.LogId.ToString())
+                    .WithValueTemplate("<a id='{Value}' class='LogsDetailGridClass' href='javascript:;'>View</a>");
+                //.WithValueTemplate("<a id=" + p.LogId + "class='LogsDetailGridClass' href='javascript:;'>View</a>");
                 //.WithValueExpression((p, c) => c.UrlHelper.Action("LogDetail", "Logs", new { id = p.LogId }))
                 //.WithValueTemplate("<a href='{Value}'>View</a>");
             })
@@ -67,6 +72,7 @@ namespace LoggerPortal
                 var items = repo.GetData(out totalRecords,
                     options.GetFilterString("ClientId"),
                     options.GetFilterString("ApplicationId"),
+                    options.GetFilterString("LogTypeId"),
                     options.GetLimitOffset(), options.GetLimitRowcount(),
                     sortColumn, options.SortDirection == SortDirection.Dsc);
                 return new QueryResult<LogsDetail>()

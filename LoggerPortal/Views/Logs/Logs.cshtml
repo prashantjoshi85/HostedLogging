@@ -11,11 +11,21 @@
 
 <div class="well">
     <div class="form-inline">
-        @Html.Label("Client: ")
-        @Html.DropDownList("Clients", (IEnumerable<SelectListItem>)ViewBag.Clients, "Select...", new { id = "ddlClients", @class = "form-control", @data_mvcgrid_type = "filter", @data_mvcgrid_option = "ClientId" })
-        @Html.Label("Application: ")
-        @Html.DropDownList("Applications", (IEnumerable<SelectListItem>)ViewBag.Applications, "Select...", new { id = "ddlApplications", @class = "form-control", @data_mvcgrid_type = "filter", @data_mvcgrid_option = "ApplicationId" })
-        <button id="btnSubmit" data-mvcgrid-apply-filter="click">Apply</button>
+        <div class="form-group">
+            @Html.Label("Client: ")
+            @Html.DropDownList("Clients", (IEnumerable<SelectListItem>)ViewBag.Clients, "Select...", new { id = "ddlClients", @class = "form-control", @data_mvcgrid_type = "filter", @data_mvcgrid_option = "ClientId" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Application: ")
+            @Html.DropDownList("Applications", (IEnumerable<SelectListItem>)ViewBag.Applications, "Select...", new { id = "ddlApplications", @class = "form-control", @data_mvcgrid_type = "filter", @data_mvcgrid_option = "ApplicationId" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Log Type: ")
+            @Html.DropDownList("LogTypes", (IEnumerable<SelectListItem>)ViewBag.LogTypes, "Select...", new { id = "ddlLogTypes", @class = "form-control", @data_mvcgrid_type = "filter", @data_mvcgrid_option = "LogTypeId" })
+        </div>
+        <div class="form-group">
+            <button id="btnSubmit" data-mvcgrid-apply-filter="click" style="margin-top: 25px">Apply</button>
+        </div>
     </div>
 </div>
 
@@ -30,7 +40,7 @@
                 title: "View Details"
             });
             $(document).on("click", ".LogsDetailGridClass", function () {
-                var logId = $(this).closest("tr").find("td").eq(0).html();
+                var logId = $(this).closest("tr").find("td").find("a").attr('id');
                 $.ajax({
                     type: "POST",
                     url: "/Logs/LogDetail",

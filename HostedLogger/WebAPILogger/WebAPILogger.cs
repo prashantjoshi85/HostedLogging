@@ -33,7 +33,7 @@ namespace WebAPILogger
         void ILogger.WriteLog(Logger.Common.LogType LogType, string Log)
         {
             // write into file
-            System.IO.StreamWriter webAPILoggerFile = new System.IO.StreamWriter(logFilePath + "\\LogFile.txt", true);
+            System.IO.StreamWriter webAPILoggerFile = new System.IO.StreamWriter(logFilePath + "\\LogFile_" + Guid.NewGuid().ToString() + ".txt", true);
 
             webAPILoggerFile.WriteLine("[" + DateTime.Now.ToString() + "]" + LogType.ToString() + ":" + "<" + Log + ">");
 

@@ -9,13 +9,13 @@ namespace LoggerPortal.Models
     {
         IEnumerable<LogsDetail> GetData(out int totalRecords, string globalSearch, int? limitOffset, int? limitRowCount, string orderBy, bool desc);
         IEnumerable<LogsDetail> GetData(out int totalRecords, int? limitOffset, int? limitRowCount, string orderBy, bool desc);
-        IEnumerable<LogsDetail> GetData(out int totalRecords, string filterClientId, string filterApplicationId, int? limitOffset, int? limitRowCount, string orderBy, bool desc);
+        IEnumerable<LogsDetail> GetData(out int totalRecords, string filterClientId, string filterApplicationId, string filterLogTypeId, int? limitOffset, int? limitRowCount, string orderBy, bool desc);
     }
     public class LogsDetailRepository : ILogsDetailRepository
     {
-        public IEnumerable<LogsDetail> GetData(out int totalRecords, string filterClientId, string filterApplicationId, int? limitOffset, int? limitRowCount, string orderBy, bool desc)
+        public IEnumerable<LogsDetail> GetData(out int totalRecords, string filterClientId, string filterApplicationId, string filterLogTypeId, int? limitOffset, int? limitRowCount, string orderBy, bool desc)
         {
-            return GetData(out totalRecords, null, filterClientId, filterApplicationId, limitOffset, limitRowCount, orderBy, desc);
+            return GetData(out totalRecords, null, filterClientId, filterApplicationId, filterLogTypeId, limitOffset, limitRowCount, orderBy, desc);
         }
 
         public IEnumerable<LogsDetail> GetData(out int totalRecords, string globalSearch, int? limitOffset, int? limitRowCount, string orderBy, bool desc)
@@ -23,7 +23,7 @@ namespace LoggerPortal.Models
             return GetData(out totalRecords, globalSearch, null, null, limitOffset, limitRowCount, orderBy, desc);
         }
 
-        public IEnumerable<LogsDetail> GetData(out int totalRecords, string globalSearch, string filterClientId, string filterApplicationId, int? limitOffset, int? limitRowCount, string orderBy, bool desc)
+        public IEnumerable<LogsDetail> GetData(out int totalRecords, string globalSearch, string filterClientId, string filterApplicationId, string filterLogTypeId, int? limitOffset, int? limitRowCount, string orderBy, bool desc)
         {
             using (var db = new Logger_Entities())
             {
@@ -37,10 +37,14 @@ namespace LoggerPortal.Models
                 {
                     query = query.Where(p => p.ApplicationId.ToString() == filterApplicationId);
                 }
+                if (!String.IsNullOrWhiteSpace(filterLogTypeId))
+                {
+                    query = query.Where(p => p.LogType.ToString() == filterLogTypeId);
+                }
 
                 if (!String.IsNullOrWhiteSpace(globalSearch))
                 {
-                    query = query.Where(p => (p.ClientId + " " + p.ApplicationId).Contains(globalSearch));
+                    query = query.Where(p => (p.ClientId + " " + p.ApplicationId + " " + p.LogType).Contains(globalSearch));
                 }
 
                 totalRecords = query.Count();
