@@ -1,0 +1,57 @@
+﻿@model IEnumerable<LoggerPortal.Models.LogPayload>
+
+@using MVCGrid.Web
+
+@{
+    ViewBag.Title = "Logs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Logs</h2>
+
+<div class="well">
+    <div class="form-inline">
+        @Html.Label("Client: ")
+        @Html.DropDownList("Clients", (IEnumerable<SelectListItem>)ViewBag.Clients, "Select...", new { id = "ddlClients", @class = "form-control", @data_mvcgrid_type = "filter", @data_mvcgrid_option = "ClientId" })
+        @Html.Label("Application: ")
+        @Html.DropDownList("Applications", (IEnumerable<SelectListItem>)ViewBag.Applications, "Select...", new { id = "ddlApplications", @class = "form-control", @data_mvcgrid_type = "filter", @data_mvcgrid_option = "ApplicationId" })
+        <button id="btnSubmit" data-mvcgrid-apply-filter="click">Apply</button>
+    </div>
+</div>
+
+<div id="dialog" style="display: none" class="col-md-12">
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+            $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "View Details"
+            });
+            $(document).on("click", ".LogsDetailGridClass", function () {
+                var logId = $(this).closest("tr").find("td").eq(0).html();
+                $.ajax({
+                    type: "POST",
+                    url: "/Logs/LogDetail",
+                    data: '{logId: "' + logId + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $('#dialog').html(response);
+                        $('#dialog').dialog('open');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+
+@Html.MVCGrid("LogsDetailGrid")

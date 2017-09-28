@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LoggingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogEntry">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="LogType" Type="int" Nullable="false" />
+          <Property Name="LogDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogEntryArchive">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="LogType" Type="int" Nullable="false" />
+          <Property Name="LogDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogPayload">
+          <Key>
+            <PropertyRef Name="PayloadId" />
+          </Key>
+          <Property Name="PayloadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogId" Type="int" Nullable="false" />
+          <Property Name="PayLoad" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LogPayloadArchive">
+          <Key>
+            <PropertyRef Name="PayloadId" />
+          </Key>
+          <Property Name="PayloadId" Type="int" Nullable="false" />
+          <Property Name="LogId" Type="int" Nullable="false" />
+          <Property Name="PayLoad" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LogType">
+          <Key>
+            <PropertyRef Name="LogTypeId" />
+          </Key>
+          <Property Name="LogTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Logging.dbo.LogsDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LogsDetail">
+          <Key>
+            <PropertyRef Name="LogId" />
+            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="LogType" />
+            <PropertyRef Name="LogDateTime" />
+            <PropertyRef Name="ApplicationName" />
+            <PropertyRef Name="ClientName" />
+            <PropertyRef Name="LogTypeName" />
+          </Key>
+          <Property Name="LogId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="LogType" Type="int" Nullable="false" />
+          <Property Name="LogDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ApplicationName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LogTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Log_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="LogEntry" Type="Self.LogEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="LogEntry">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="LogEntry" Type="Self.LogEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="LogEntry">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogPayLoad_LogEntry">
+          <End Role="LogEntry" Type="Self.LogEntry" Multiplicity="1" />
+          <End Role="LogPayload" Type="Self.LogPayload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogEntry">
+              <PropertyRef Name="LogId" />
+            </Principal>
+            <Dependent Role="LogPayload">
+              <PropertyRef Name="LogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ArchiveLogs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArchiveDays" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="LoggingModelStoreContainer">
+          <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogEntry" EntityType="Self.LogEntry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogEntryArchive" EntityType="Self.LogEntryArchive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogPayload" EntityType="Self.LogPayload" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogPayloadArchive" EntityType="Self.LogPayloadArchive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogType" EntityType="Self.LogType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogsDetail" EntityType="Self.LogsDetail" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LogsDetail].[LogId] AS [LogId], 
+    [LogsDetail].[ClientId] AS [ClientId], 
+    [LogsDetail].[ApplicationId] AS [ApplicationId], 
+    [LogsDetail].[LogType] AS [LogType], 
+    [LogsDetail].[LogDateTime] AS [LogDateTime], 
+    [LogsDetail].[ApplicationName] AS [ApplicationName], 
+    [LogsDetail].[ClientName] AS [ClientName], 
+    [LogsDetail].[LogTypeName] AS [LogTypeName]
+    FROM [dbo].[LogsDetail] AS [LogsDetail]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Log_Application" Association="Self.FK_Log_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="LogEntry" EntitySet="LogEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Client" Association="Self.FK_Log_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="LogEntry" EntitySet="LogEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogPayLoad_LogEntry" Association="Self.FK_LogPayLoad_LogEntry">
+            <End Role="LogEntry" EntitySet="LogEntry" />
+            <End Role="LogPayload" EntitySet="LogPayload" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Logger_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LogEntries" Relationship="Self.FK_Log_Application" FromRole="Application" ToRole="LogEntry" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LogEntries" Relationship="Self.FK_Log_Client" FromRole="Client" ToRole="LogEntry" />
+        </EntityType>
+        <EntityType Name="LogEntry">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="LogType" Type="Int32" Nullable="false" />
+          <Property Name="LogDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Log_Application" FromRole="LogEntry" ToRole="Application" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Log_Client" FromRole="LogEntry" ToRole="Client" />
+          <NavigationProperty Name="LogPayloads" Relationship="Self.FK_LogPayLoad_LogEntry" FromRole="LogEntry" ToRole="LogPayload" />
+        </EntityType>
+        <EntityType Name="LogEntryArchive">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="LogType" Type="Int32" Nullable="false" />
+          <Property Name="LogDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="LogPayload">
+          <Key>
+            <PropertyRef Name="PayloadId" />
+          </Key>
+          <Property Name="PayloadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogId" Type="Int32" Nullable="false" />
+          <Property Name="PayLoad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LogEntry" Relationship="Self.FK_LogPayLoad_LogEntry" FromRole="LogPayload" ToRole="LogEntry" />
+        </EntityType>
+        <EntityType Name="LogPayloadArchive">
+          <Key>
+            <PropertyRef Name="PayloadId" />
+          </Key>
+          <Property Name="PayloadId" Type="Int32" Nullable="false" />
+          <Property Name="LogId" Type="Int32" Nullable="false" />
+          <Property Name="PayLoad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LogType">
+          <Key>
+            <PropertyRef Name="LogTypeId" />
+          </Key>
+          <Property Name="LogTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogsDetail">
+          <Key>
+            <PropertyRef Name="LogId" />
+            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="LogType" />
+            <PropertyRef Name="LogDateTime" />
+            <PropertyRef Name="ApplicationName" />
+            <PropertyRef Name="ClientName" />
+            <PropertyRef Name="LogTypeName" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="LogType" Type="Int32" Nullable="false" />
+          <Property Name="LogDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ApplicationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LogTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Log_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="LogEntry" Type="Self.LogEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="LogEntry">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="LogEntry" Type="Self.LogEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="LogEntry">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogPayLoad_LogEntry">
+          <End Role="LogEntry" Type="Self.LogEntry" Multiplicity="1" />
+          <End Role="LogPayload" Type="Self.LogPayload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogEntry">
+              <PropertyRef Name="LogId" />
+            </Principal>
+            <Dependent Role="LogPayload">
+              <PropertyRef Name="LogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Logger_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Applications" EntityType="Self.Application" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="LogEntries" EntityType="Self.LogEntry" />
+          <EntitySet Name="LogEntryArchives" EntityType="Self.LogEntryArchive" />
+          <EntitySet Name="LogPayloads" EntityType="Self.LogPayload" />
+          <EntitySet Name="LogPayloadArchives" EntityType="Self.LogPayloadArchive" />
+          <EntitySet Name="LogTypes" EntityType="Self.LogType" />
+          <EntitySet Name="LogsDetails" EntityType="Self.LogsDetail" />
+          <AssociationSet Name="FK_Log_Application" Association="Self.FK_Log_Application">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="LogEntry" EntitySet="LogEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Client" Association="Self.FK_Log_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="LogEntry" EntitySet="LogEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogPayLoad_LogEntry" Association="Self.FK_LogPayLoad_LogEntry">
+            <End Role="LogEntry" EntitySet="LogEntries" />
+            <End Role="LogPayload" EntitySet="LogPayloads" />
+          </AssociationSet>
+          <FunctionImport Name="ArchiveLogs">
+            <Parameter Name="ArchiveDays" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LoggingModelStoreContainer" CdmEntityContainer="Logger_Entities">
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="Logger_Model.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="Logger_Model.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogEntries">
+            <EntityTypeMapping TypeName="Logger_Model.LogEntry">
+              <MappingFragment StoreEntitySet="LogEntry">
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="LogDateTime" ColumnName="LogDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogEntryArchives">
+            <EntityTypeMapping TypeName="Logger_Model.LogEntryArchive">
+              <MappingFragment StoreEntitySet="LogEntryArchive">
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="LogDateTime" ColumnName="LogDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogPayloads">
+            <EntityTypeMapping TypeName="Logger_Model.LogPayload">
+              <MappingFragment StoreEntitySet="LogPayload">
+                <ScalarProperty Name="PayloadId" ColumnName="PayloadId" />
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="PayLoad" ColumnName="PayLoad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogPayloadArchives">
+            <EntityTypeMapping TypeName="Logger_Model.LogPayloadArchive">
+              <MappingFragment StoreEntitySet="LogPayloadArchive">
+                <ScalarProperty Name="PayloadId" ColumnName="PayloadId" />
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="PayLoad" ColumnName="PayLoad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogTypes">
+            <EntityTypeMapping TypeName="Logger_Model.LogType">
+              <MappingFragment StoreEntitySet="LogType">
+                <ScalarProperty Name="LogTypeId" ColumnName="LogTypeId" />
+                <ScalarProperty Name="LogTypeName" ColumnName="LogTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogsDetails">
+            <EntityTypeMapping TypeName="Logger_Model.LogsDetail">
+              <MappingFragment StoreEntitySet="LogsDetail">
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="LogDateTime" ColumnName="LogDateTime" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="LogTypeName" ColumnName="LogTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ArchiveLogs" FunctionName="LoggingModel.Store.ArchiveLogs" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
