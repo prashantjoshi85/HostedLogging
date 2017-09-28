@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +48,10 @@
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{4d7bff8e-e7d1-4075-9e26-91e0ec3af4b3}</Project>
       <Name>Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogProcessor\LogProcessor.csproj">
+      <Project>{e1fdae73-f04b-4176-9c40-9a90e2fc431d}</Project>
+      <Name>LogProcessor</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebAPILogProcessor\WebAPILogProcessor.csproj">
       <Project>{f4a32d9e-fd46-44f4-9b2b-ba63cbf5686e}</Project>
