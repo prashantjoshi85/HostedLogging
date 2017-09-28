@@ -8,6 +8,7 @@ namespace LogProcessor
     public interface ILogProcessor
     {
         bool IsRunning { get; set; }
+
         void ProcessLog();
     }
 }
