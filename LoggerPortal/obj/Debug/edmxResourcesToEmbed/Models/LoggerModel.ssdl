@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LoggingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Application">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicationName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LogEntry">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+    <Property Name="ApplicationId" Type="int" Nullable="false" />
+    <Property Name="LogType" Type="int" Nullable="false" />
+    <Property Name="LogDateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LogEntryArchive">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="int" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+    <Property Name="ApplicationId" Type="int" Nullable="false" />
+    <Property Name="LogType" Type="int" Nullable="false" />
+    <Property Name="LogDateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LogPayload">
+    <Key>
+      <PropertyRef Name="PayloadId" />
+    </Key>
+    <Property Name="PayloadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LogId" Type="int" Nullable="false" />
+    <Property Name="PayLoad" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="LogPayloadArchive">
+    <Key>
+      <PropertyRef Name="PayloadId" />
+    </Key>
+    <Property Name="PayloadId" Type="int" Nullable="false" />
+    <Property Name="LogId" Type="int" Nullable="false" />
+    <Property Name="PayLoad" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="LogType">
+    <Key>
+      <PropertyRef Name="LogTypeId" />
+    </Key>
+    <Property Name="LogTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LogTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Logging.dbo.LogsDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LogsDetail">
+    <Key>
+      <PropertyRef Name="LogId" />
+      <PropertyRef Name="ClientId" />
+      <PropertyRef Name="ApplicationId" />
+      <PropertyRef Name="LogType" />
+      <PropertyRef Name="LogDateTime" />
+      <PropertyRef Name="ApplicationName" />
+      <PropertyRef Name="ClientName" />
+      <PropertyRef Name="LogTypeName" />
+    </Key>
+    <Property Name="LogId" Type="int" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
+    <Property Name="ApplicationId" Type="int" Nullable="false" />
+    <Property Name="LogType" Type="int" Nullable="false" />
+    <Property Name="LogDateTime" Type="datetime" Nullable="false" />
+    <Property Name="ApplicationName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClientName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LogTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Log_Application">
+    <End Role="Application" Type="Self.Application" Multiplicity="1" />
+    <End Role="LogEntry" Type="Self.LogEntry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Application">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="LogEntry">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="LogEntry" Type="Self.LogEntry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="LogEntry">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogPayLoad_LogEntry">
+    <End Role="LogEntry" Type="Self.LogEntry" Multiplicity="1" />
+    <End Role="LogPayload" Type="Self.LogPayload" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LogEntry">
+        <PropertyRef Name="LogId" />
+      </Principal>
+      <Dependent Role="LogPayload">
+        <PropertyRef Name="LogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ArchiveLogs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArchiveDays" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="LoggingModelStoreContainer">
+    <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogEntry" EntityType="Self.LogEntry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogEntryArchive" EntityType="Self.LogEntryArchive" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogPayload" EntityType="Self.LogPayload" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogPayloadArchive" EntityType="Self.LogPayloadArchive" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogType" EntityType="Self.LogType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogsDetail" EntityType="Self.LogsDetail" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LogsDetail].[LogId] AS [LogId], 
+    [LogsDetail].[ClientId] AS [ClientId], 
+    [LogsDetail].[ApplicationId] AS [ApplicationId], 
+    [LogsDetail].[LogType] AS [LogType], 
+    [LogsDetail].[LogDateTime] AS [LogDateTime], 
+    [LogsDetail].[ApplicationName] AS [ApplicationName], 
+    [LogsDetail].[ClientName] AS [ClientName], 
+    [LogsDetail].[LogTypeName] AS [LogTypeName]
+    FROM [dbo].[LogsDetail] AS [LogsDetail]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Log_Application" Association="Self.FK_Log_Application">
+      <End Role="Application" EntitySet="Application" />
+      <End Role="LogEntry" EntitySet="LogEntry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_Client" Association="Self.FK_Log_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="LogEntry" EntitySet="LogEntry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogPayLoad_LogEntry" Association="Self.FK_LogPayLoad_LogEntry">
+      <End Role="LogEntry" EntitySet="LogEntry" />
+      <End Role="LogPayload" EntitySet="LogPayload" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
