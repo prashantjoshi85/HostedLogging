@@ -1,0 +1,5 @@
+D:\Hackathon\HostedLogger\LogProcessor\bin\Debug\Logger.dll
+D:\Hackathon\HostedLogger\LogProcessor\bin\Debug\Logger.pdb
+D:\Hackathon\HostedLogger\LogProcessor\obj\Debug\LogProcessor.csprojResolveAssemblyReference.cache
+D:\Hackathon\HostedLogger\LogProcessor\obj\Debug\Logger.dll
+D:\Hackathon\HostedLogger\LogProcessor\obj\Debug\Logger.pdb

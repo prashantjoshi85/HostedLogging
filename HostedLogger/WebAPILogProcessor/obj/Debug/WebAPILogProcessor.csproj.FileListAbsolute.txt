@@ -1,0 +1,9 @@
+D:\Hackathon\HostedLogger\WebAPILogProcessor\bin\Debug\APILogSender.dll
+D:\Hackathon\HostedLogger\WebAPILogProcessor\bin\Debug\APILogSender.pdb
+D:\Hackathon\HostedLogger\WebAPILogProcessor\bin\Debug\Logger.dll
+D:\Hackathon\HostedLogger\WebAPILogProcessor\bin\Debug\Newtonsoft.Json.dll
+D:\Hackathon\HostedLogger\WebAPILogProcessor\bin\Debug\Logger.pdb
+D:\Hackathon\HostedLogger\WebAPILogProcessor\bin\Debug\Newtonsoft.Json.xml
+D:\Hackathon\HostedLogger\WebAPILogProcessor\obj\Debug\WebAPILogProcessor.csprojResolveAssemblyReference.cache
+D:\Hackathon\HostedLogger\WebAPILogProcessor\obj\Debug\APILogSender.dll
+D:\Hackathon\HostedLogger\WebAPILogProcessor\obj\Debug\APILogSender.pdb
