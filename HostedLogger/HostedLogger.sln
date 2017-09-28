@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BE5741AF-0EE3-4F54-ACD7-AF1989A5648F}"
 EndProject
@@ -23,6 +23,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Processors", "Processors", "{E6B74E07-8CA1-4A8B-B711-AABAE64CA784}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Loggers", "Loggers", "{3932BAB0-3F19-46ED-BB38-7C17056F2173}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerAPI", "..\LoggAPI\LoggerAPI\LoggerAPI.csproj", "{4264BDAD-A281-449E-A92C-D34FBF38BC37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{D6CD4324-0C22-46A1-9FB0-964ADE49BBA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6CD4324-0C22-46A1-9FB0-964ADE49BBA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6CD4324-0C22-46A1-9FB0-964ADE49BBA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4264BDAD-A281-449E-A92C-D34FBF38BC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4264BDAD-A281-449E-A92C-D34FBF38BC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4264BDAD-A281-449E-A92C-D34FBF38BC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4264BDAD-A281-449E-A92C-D34FBF38BC37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
