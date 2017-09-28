@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "description": "HostedLogger Class Library",
   "authors": [ "prashant.joshi" ],
@@ -7,7 +7,11 @@
   "licenseUrl": "",
 
   "frameworks": {
-    "net451": { },
+    "net451": {
+      "dependencies": {
+        "System.Threading.Timer": "4.0.1-beta-23516"
+      }
+    },
     "dotnet5.4": {
       "dependencies": {
         "Microsoft.CSharp": "4.0.1-beta-23516",
