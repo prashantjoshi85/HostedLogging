@@ -82,7 +82,7 @@ namespace LoggerAPI.Controllers
             db.LogEntries.Add(logEntry);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = logEntry.LogId }, logEntry );
+            return CreatedAtRoute("DefaultApi", new { id = logEntry.LogId }, logEntry.LogId  );
         }
 
         // DELETE: api/LogEntries/5
