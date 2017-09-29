@@ -36,6 +36,10 @@ namespace WebAPILogger
             if (webAPILogType.Contains(LogType.ToString()))
             {
                 // write into file
+                if (!Directory.Exists(logFilePath))
+                {
+                    Directory.CreateDirectory(logFilePath);
+                }
                 using (System.IO.StreamWriter webAPILoggerFile = new System.IO.StreamWriter(logFilePath + "\\LogFile_" + Guid.NewGuid().ToString() + ".txt", true))
                 {
                     webAPILoggerFile.WriteLine("[" + DateTime.Now.ToString() + "]" + LogType.ToString() + ":" + "<" + Log + ">");

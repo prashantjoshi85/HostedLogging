@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Logger;
 using System.Configuration;
+using System.IO;
 
 namespace FileLogger
 {
@@ -26,6 +27,11 @@ namespace FileLogger
             if (webAPILogType.Contains(LogType.ToString()))
             {
                 // write into file
+                if (!Directory.Exists(logFilePath))
+                {
+                    Directory.CreateDirectory(logFilePath);
+                }
+
                 using (System.IO.StreamWriter loggerFile = new System.IO.StreamWriter(logFilePath + "\\LogFile_" + Guid.NewGuid().ToString() + ".txt", true))
                 {
                     loggerFile.WriteLine("[" + DateTime.Now.ToString() + "]" + LogType.ToString() + ":" + "<" + Log + ">");

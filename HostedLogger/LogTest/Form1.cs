@@ -33,12 +33,13 @@ namespace LogTest
 
 
                 int x = j / i;
-            
+             
             }
             catch (Exception ex)
             {
                 for (int count = 0; count< 500; count++)
                 {
+
                 logger.WriteLog(Common.LogType.Error, ex.Message);
                 }
             }
