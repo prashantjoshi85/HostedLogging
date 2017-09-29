@@ -40,10 +40,12 @@ namespace WebAPILogger
                 {
                     Directory.CreateDirectory(logFilePath);
                 }
-                using (System.IO.StreamWriter webAPILoggerFile = new System.IO.StreamWriter(logFilePath + "\\LogFile_" + Guid.NewGuid().ToString() + ".txt", true))
-                {
-                    webAPILoggerFile.WriteLine("[" + DateTime.Now.ToString() + "]" + LogType.ToString() + ":" + "<" + Log + ">");
-                }
+                //using (System.IO.StreamWriter webAPILoggerFile = new System.IO.StreamWriter(logFilePath + "\\LogFile_" + Guid.NewGuid().ToString() + ".txt", true))
+                //{
+                //    webAPILoggerFile.WriteLine("[" + DateTime.Now.ToString() + "]" + LogType.ToString() + ":" + "<" + Log + ">");
+                //}
+
+                System.IO.File.WriteAllText(logFilePath + "\\LogFile_" + Guid.NewGuid().ToString() + ".txt", "[" + DateTime.Now.ToString() + "]" + LogType.ToString() + ":" + "<" + Log + ">");
 
                 // if logProcessor.IsRunning is false then call ProcessLog
                 if (!logProcessor.IsProcessorRunning())

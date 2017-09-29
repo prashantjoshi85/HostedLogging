@@ -38,11 +38,14 @@ namespace LogTest
             }
             catch (Exception ex)
             {
-                for (int count = 0; count < 500; count++)
-                {
 
-                    logger.WriteLog(Common.LogType.Error, ex.Message + " : " + ex.StackTrace + " : " + ex.InnerException);
-                }
+                sendLogs(ex);
+
+                //for (int count = 0; count < 500; count++)
+                //{
+
+                //    logger.WriteLog(Common.LogType.Error, ex.Message + " : " + ex.StackTrace + " : " + ex.InnerException);
+                //}
             }
         }
 
@@ -61,7 +64,7 @@ namespace LogTest
 
         private void sendLogs(Exception ex)
         {
-            for (int count = 0; count < int.Parse(txtIteration.Text) ; count++)
+            for (int count = 0; count < int.Parse(txtIteration.Text); count++)
             {
 
                 logger.WriteLog(Common.LogType.Error, ex.Message + " : " + ex.StackTrace + " : " + ex.InnerException);

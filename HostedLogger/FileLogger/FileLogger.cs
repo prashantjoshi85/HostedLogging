@@ -32,10 +32,11 @@ namespace FileLogger
                     Directory.CreateDirectory(logFilePath);
                 }
 
-                using (System.IO.StreamWriter loggerFile = new System.IO.StreamWriter(logFilePath + "\\LogFile_" + Guid.NewGuid().ToString() + ".txt", true))
-                {
-                    loggerFile.WriteLine("[" + DateTime.Now.ToString() + "]" + LogType.ToString() + ":" + "<" + Log + ">");
-                }
+                //using (System.IO.StreamWriter loggerFile = new System.IO.StreamWriter(logFilePath + "\\LogFile_" + Guid.NewGuid().ToString() + ".txt", true))
+                //{
+                //    loggerFile.WriteLine("[" + DateTime.Now.ToString() + "]" + LogType.ToString() + ":" + "<" + Log + ">");
+                //}
+                System.IO.File.WriteAllText(logFilePath + "\\LogFile_" + Guid.NewGuid().ToString() + ".txt", "[" + DateTime.Now.ToString() + "]" + LogType.ToString() + ":" + "<" + Log + ">");
             }
         }
     }

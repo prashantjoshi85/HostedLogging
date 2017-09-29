@@ -27,7 +27,7 @@ namespace WebAPILogProcessor
 
         public string APIUrl { get; set; }
 
-        public bool IsRunning
+        public  bool IsRunning
         {
             get;
 
@@ -60,14 +60,13 @@ namespace WebAPILogProcessor
 
         }
 
-        void ILogProcessor.ProcessLog()
+        async void ILogProcessor.ProcessLog()
         {
             // start send logentries with task tpl
             try
             {
                 IsRunning = true;
-
-                Task.Factory.StartNew(() =>
+                await Task.Factory.StartNew(() =>
                {
                    SendLogEntries();
                });
@@ -95,6 +94,7 @@ namespace WebAPILogProcessor
                     foreach (FileInfo file in files)
                     {
                         List<string> allLines = new List<string>();
+                        
                         string line = File.ReadAllText(file.FullName).ToString();
                         if (File.Exists(file.FullName) == false) continue;
                         if (line.Trim() == string.Empty) continue;
@@ -240,5 +240,7 @@ namespace WebAPILogProcessor
         {
             return IsRunning;
         }
+             
+       
     }
 }
