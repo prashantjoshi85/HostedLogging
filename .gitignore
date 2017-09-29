@@ -3,3 +3,24 @@
 ################################################################################
 
 /ConsumeAPI/ConsumeAPI
+/HostedLogger/.vs
+/HostedLogger/FileLogger/obj
+/HostedLogger/FileLogger/bin
+/HostedLogger/Logger/obj
+/HostedLogger/Logger/bin
+/HostedLogger/LogProcessor/obj
+/HostedLogger/LogProcessor/bin
+/HostedLogger/LogTest/obj
+/HostedLogger/LogTest/bin
+/HostedLogger/packages
+/HostedLogger/WebAPILogger/obj
+/HostedLogger/WebAPILogger/bin
+/HostedLogger/WebAPILogProcessor/obj
+/HostedLogger/WebAPILogProcessor/bin
+/LoggAPI/.vs
+/LoggAPI/packages
+/LoggAPI/Publish
+/LoggAPI/LoggerAPI/bin
+/LoggAPI/LoggerAPI/obj
+/LoggerPortal/bin
+/LoggerPortal/obj
