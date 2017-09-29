@@ -7,9 +7,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Logs</h2>
+@*<h2>Logs</h2>*@
 
-<div class="well">
+<style>
+    #MVCGridTableHolder_LogsDetailGrid .row {
+        margin-bottom: -35px !important;
+        margin-top: -15px !important;
+    }
+</style>
+
+<div class="well" style="padding: 10px!important; margin-top: 5px!important;margin-bottom:-15px!important">
     <div class="form-inline">
         <div class="form-group">
             @Html.Label("Client: ")
@@ -29,7 +36,7 @@
     </div>
 </div>
 
-<div id="dialog" style="display: none" class="col-md-12">
+<div id="dialog" style="display: none">
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -37,7 +44,10 @@
             $("#dialog").dialog({
                 autoOpen: false,
                 modal: true,
-                title: "View Details"
+                title: "View Details",
+                width: '60%',
+                minHeight: 'auto',
+                resiz: 'auto'
             });
             $(document).on("click", ".LogsDetailGridClass", function () {
                 var logId = $(this).closest("tr").find("td").find("a").attr('id');
