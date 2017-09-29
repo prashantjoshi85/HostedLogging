@@ -19,13 +19,23 @@ namespace WebAPILogProcessor
 
         public int ApplicationId { get; set; }
 
-        public bool IsRunning { get; set; }
+       // public bool IsRunning { get; set; }
 
         private System.Timers.Timer T1;
 
         public string LogFilePath { get; set; }
 
         public string APIUrl { get; set; }
+
+        public bool IsRunning
+        {
+            get;
+
+
+            set;
+            
+        }
+
 
         public WebAPILogProcessor(int ClientId, int ApplicationId, string LogFilePath)
         {
@@ -53,10 +63,19 @@ namespace WebAPILogProcessor
         void ILogProcessor.ProcessLog()
         {
             // start send logentries with task tpl
-            Task.Factory.StartNew(() =>
-           {
-               SendLogEntries();
-           });
+            try
+            {
+                IsRunning = true;
+
+                Task.Factory.StartNew(() =>
+               {
+                   SendLogEntries();
+               });
+            }
+            catch(Exception ex)
+            {
+                IsRunning = false;
+            }
         }
 
         public void SendLogEntries()
@@ -78,6 +97,7 @@ namespace WebAPILogProcessor
                         List<string> allLines = new List<string>();
                         //using (StreamReader fileReader = new StreamReader(file.FullName))
                         //{
+                        if (File.Exists(file.FullName) == false) continue;
                         allLines = File.ReadAllLines(file.FullName).ToList();
                         if (allLines.Count == 0)
                         {
@@ -91,22 +111,22 @@ namespace WebAPILogProcessor
                                 if (line.Trim() == string.Empty) continue;
                                 int EndIndex = line.IndexOf("]");
                                 DateTime LogDateTime = Convert.ToDateTime(line.Substring(1, EndIndex - 1));
-                                int ErrorIndex = line.IndexOf(":");
+                                int ErrorIndex = line.IndexOf("<");
                                 int LineLength = line.Length;
-                                string LogType = line.Substring(EndIndex + 1, (ErrorIndex - (EndIndex + 1)));
-                                string PayLoads = line.Substring(ErrorIndex + 1, (LineLength - (ErrorIndex + 1)));
+                                string LogType = line.Substring(EndIndex + 1, (ErrorIndex - (EndIndex + 2)));
+                                string PayLoads = line.Substring(ErrorIndex + 1, (LineLength - (ErrorIndex + 2)));
                                 Int32 LogTypeId = 0;
 
                                 switch (LogType.ToUpper())
                                 {
                                     case "ERROR":
-                                        LogTypeId = Int32.Parse(Common.LogType.Error.ToString());
+                                        LogTypeId = (int)Common.LogType.Error;
                                         break;
                                     case "WARNING":
-                                        LogTypeId = Int32.Parse(Common.LogType.Warning.ToString());
+                                        LogTypeId = (int)Common.LogType.Warning;
                                         break;
                                     case "INFO":
-                                        LogTypeId = Int32.Parse(Common.LogType.Error.ToString());
+                                        LogTypeId = (int)Common.LogType.Error;
                                         break;
                                 }
 
@@ -154,7 +174,7 @@ namespace WebAPILogProcessor
                                                     throw ex;
                                             }
                                         }
-                                        IsRunning = false;
+                                        
                                         break;
                                     }
                                 }
@@ -162,7 +182,10 @@ namespace WebAPILogProcessor
                             }
                         }
                         //}
-                        File.Delete(file.FullName);
+                        if (File.Exists(file.FullName))
+                        {
+                            File.Delete(file.FullName);
+                        }
                     }
 
                     #region "DeletedCode1"
@@ -197,7 +220,7 @@ namespace WebAPILogProcessor
                     //}
                     #endregion
 
-                    IsRunning = false;
+                    //IsRunning = false;
                 }
             }
             catch (Exception Ex)
@@ -208,7 +231,7 @@ namespace WebAPILogProcessor
                 {
                     WriteToText(Ex);
                 });
-                IsRunning = false;
+               // IsRunning = false;
             }
 
         }
@@ -227,5 +250,9 @@ namespace WebAPILogProcessor
             }
         }
 
+        bool ILogProcessor.IsProcessorRunning()
+        {
+            return IsRunning;
+        }
     }
 }

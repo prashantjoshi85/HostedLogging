@@ -3,3 +3,8 @@ D:\Hackathon\HostedLogger\LogProcessor\bin\Debug\Logger.pdb
 D:\Hackathon\HostedLogger\LogProcessor\obj\Debug\LogProcessor.csprojResolveAssemblyReference.cache
 D:\Hackathon\HostedLogger\LogProcessor\obj\Debug\Logger.dll
 D:\Hackathon\HostedLogger\LogProcessor\obj\Debug\Logger.pdb
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\LogProcessor\obj\Debug\LogProcessor.csprojResolveAssemblyReference.cache
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\LogProcessor\bin\Debug\LogProcessor.dll
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\LogProcessor\bin\Debug\LogProcessor.pdb
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\LogProcessor\obj\Debug\LogProcessor.dll
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\LogProcessor\obj\Debug\LogProcessor.pdb

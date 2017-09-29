@@ -9,3 +9,16 @@ D:\Hackathon\HostedLogger\WebAPILogger\bin\Debug\Newtonsoft.Json.xml
 D:\Hackathon\HostedLogger\WebAPILogger\obj\Debug\WebAPILogger.csprojResolveAssemblyReference.cache
 D:\Hackathon\HostedLogger\WebAPILogger\obj\Debug\WebAPILogger.dll
 D:\Hackathon\HostedLogger\WebAPILogger\obj\Debug\WebAPILogger.pdb
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\WebAPILogger\bin\Debug\WebAPILogger.dll
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\WebAPILogger\bin\Debug\WebAPILogger.pdb
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\WebAPILogger\bin\Debug\Logger.dll
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\WebAPILogger\bin\Debug\Newtonsoft.Json.dll
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\WebAPILogger\bin\Debug\Logger.pdb
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\WebAPILogger\bin\Debug\Newtonsoft.Json.xml
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\WebAPILogger\obj\Debug\WebAPILogger.csprojResolveAssemblyReference.cache
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\WebAPILogger\obj\Debug\WebAPILogger.dll
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\WebAPILogger\obj\Debug\WebAPILogger.pdb
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\WebAPILogger\bin\Debug\LogProcessor.dll
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\WebAPILogger\bin\Debug\WebAPILogProcessor.dll
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\WebAPILogger\bin\Debug\LogProcessor.pdb
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\WebAPILogger\bin\Debug\WebAPILogProcessor.pdb

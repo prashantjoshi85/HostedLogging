@@ -5,3 +5,10 @@ D:\Hackathon\HostedLogger\FileLogger\bin\Debug\Logger.pdb
 D:\Hackathon\HostedLogger\FileLogger\obj\Debug\FileLogger.csprojResolveAssemblyReference.cache
 D:\Hackathon\HostedLogger\FileLogger\obj\Debug\FileLogger.dll
 D:\Hackathon\HostedLogger\FileLogger\obj\Debug\FileLogger.pdb
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\FileLogger\bin\Debug\FileLogger.dll
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\FileLogger\bin\Debug\FileLogger.pdb
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\FileLogger\bin\Debug\Logger.dll
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\FileLogger\bin\Debug\Logger.pdb
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\FileLogger\obj\Debug\FileLogger.csprojResolveAssemblyReference.cache
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\FileLogger\obj\Debug\FileLogger.dll
+D:\GIt Source\New Logging\HostedLogging\HostedLogger\FileLogger\obj\Debug\FileLogger.pdb
