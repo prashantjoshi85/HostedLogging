@@ -40,7 +40,7 @@ namespace LogTest
                 for (int count = 0; count< 500; count++)
                 {
 
-                logger.WriteLog(Common.LogType.Error, ex.Message);
+                logger.WriteLog(Common.LogType.Error, ex.Message + " : " + ex.StackTrace + " : " + ex.InnerException );
                 }
             }
         }
